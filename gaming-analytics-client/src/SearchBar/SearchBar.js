@@ -11,7 +11,6 @@ export default class SearchBar extends React.Component {
           e.preventDefault()
           this.props.setSearchTerm(e.target.value)
         }}>
-          <label htmlFor='search-term'>SEARCH:</label>
           <input type='text' name='search-term' id='search-term' />
           <button type='submit'>SEARCH</button>
         </form>

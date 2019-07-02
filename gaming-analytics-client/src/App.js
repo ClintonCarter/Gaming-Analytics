@@ -8,8 +8,7 @@ class App extends React.Component {
     this.state = {
       userInput: '',
       list: [],
-      printType: '',
-      bookType: '',
+      printType: ''
     }
   }
 
