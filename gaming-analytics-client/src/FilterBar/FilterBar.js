@@ -5,7 +5,7 @@ export default function FilterBar() {
   return (
     <div className='filters'>
       <form className='filters-controls'>
-        <label htmlFor='print-type-filter'>Print Type:</label>
+        <label htmlFor='print-type-filter'>Date:</label>
         <select name='print-type-filter' id='print-type-filter'>
           <option value='all'>All</option>
           <option value='month'>Last 30 Days</option>

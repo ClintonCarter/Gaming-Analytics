@@ -21,7 +21,8 @@ class App extends React.Component {
 
 
   componentDidMount() {
-    fetch(`https://api.twitch.tv/helix/analytics/games?q=${this.state.userInput}`)
+    fetch(`https://api.twitch.tv/helix/analytics/games`)
+      // ? q = ${ this.state.userInput }
       .then(response => {
         if (!response.ok) {
           throw new Error('something went wrong');
