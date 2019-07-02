@@ -12,7 +12,7 @@ export default class Controls extends React.Component {
   render() {
     return (
       <div className='controls'>
-        <h1>Google Book Search</h1>
+        <h1>Your Game Analytics</h1>
         <SearchBar setSearchTerm={this.props.setSearchTerm} />
         <FilterBar />
       </div>
