@@ -1,26 +1,54 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Controller from './Controller/Controller';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      userInput: '',
+      list: [],
+      printType: '',
+      bookType: '',
+    }
+  }
+
+  setSearchTerm(userInput) {
+    this.setState({
+      userInput
+    });
+  }
+
+
+
+  componentDidMount() {
+    fetch(`https://api.twitch.tv/helix/analytics/games?q=${this.state.userInput}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('something went wrong');
+        } return response;
+      })
+      .then(response => response.json())
+      .then(data => {
+        // console.log(data)
+        const list = data.items
+        this.setState({
+          list
+        });
+      })
+      .catch(err => {
+        console.log('This is error', err)
+      });
+  }
+
+  render() {
+    return (
+      <div className='App'>
+        <Controller printType={this.state.printType} setSearchTerm={this.setSearchTerm} />
+        {/* <Books list={this.state.list} /> */}
+      </div>
+    );
+  }
 }
 
 export default App;
